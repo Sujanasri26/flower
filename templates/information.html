@@ -11,7 +11,7 @@
         body {
             background-image: url("{% static 'info.jpg' %}");
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin-top: 100px;
             background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover; 
@@ -19,7 +19,7 @@
         h1{
             color:cornsilk;
             font-size: 100px;
-            margin-left: 400px;
+            margin-left:100px;
         }
         h3
         {
@@ -50,10 +50,23 @@
             width:800px;
             margin-left: 300px;
         }
+        .a{
+
+    position: fixed; /* Keeps it fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    background-image: url("{% static 'info.jpg' %}"); /* Semi-transparent background */
+    color: white;
+    text-align:center;
+    z-index: 1000; 
+    background-repeat: no-repeat;
+    background-size: cover;
+        }
 </style>
 </head>
 <body>
-    <h1>Flower List</h1>
+    <div class="a"><h1>Flower List</h1></div>
     <ul>
         {% for flower in flowers %}
             <li>
