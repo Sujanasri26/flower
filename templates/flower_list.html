@@ -1,0 +1,210 @@
+{% load static %}
+<!-- flowers/flower_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- <style>
+        body {
+            background-image: url("{% static 'listpic.jpg' %}");
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover; 
+        }
+        h1{
+            color:cornsilk;
+            font-size: 100px;
+            margin-left: 400px;
+        }
+        h3
+        {
+          color:lightpink;
+          font-size: 80px;
+
+        }
+        p
+        {
+          color:aliceblue;
+          font-size: 20px;
+          font-weight: bolder;
+
+        }
+        img
+        {
+            border: 2px solid whitesmoke;
+            height:400px;
+            width:500px;
+        }
+        ul
+        {
+         color:fuchsia;
+        }
+        .carousel
+        {
+            height: 700px;
+            width:800px;
+            margin-left: 300px;
+        }
+</style>
+</head>
+<body>
+    <h1>Flower List</h1>
+
+<div id="carouselExampleCaptions" class="carousel w-80" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        {% for flower in flowers %}
+        <button 
+            type="button" 
+            data-bs-target="#carouselExampleCaptions" 
+            data-bs-slide-to="{{ forloop.counter0 }}" 
+            class="{% if forloop.first %}active{% endif %}" 
+            aria-current="{% if forloop.first %}true{% endif %}" 
+            aria-label="Slide {{ forloop.counter }}">
+        </button>
+        {% endfor %}
+    </div>
+
+    <div class="carousel-inner">
+        {% for flower in flowers %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ flower.image.url }}" class="d-block w-100" alt="{{ flower.name }}">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>{{ flower.name }}</h5>
+                <p>{{ flower.description }}</p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+         
+</body>
+</html> -->
+<style>
+body {
+    background-image: url("{% static 'listpic.jpg' %}");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color:black;
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.gallery {
+    margin-top: 150px;
+    display: flex;
+    flex-wrap: wrap; /* Ensures items wrap into a new row */
+    justify-content: center; /* Centers rows horizontally */
+    gap: 20px; 
+   /* Adds space between items */
+}
+
+.image-card {
+     /* Three cards per row */
+     width: 50%; /* Example: Adjust to 25% for smaller cards */
+     max-width: 400px;  /* Ensures cards don’t stretch too large */
+    border: 5px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background-color:hotpink;
+    text-align: center;
+}
+
+.image-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Maintains aspect ratio */
+    border-bottom: 5px solid black;
+}
+
+.content {
+    padding: 15px;
+}
+
+.content h5 {
+    margin: 10px 0 5px;
+    font-size: 34px;
+    color: black;
+}
+
+.content p {
+    font-size: 14px;
+    color:black;
+}
+
+/* 
+@media (max-width: 800px) {
+    .image-card {
+        width: 80%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .image-card {
+        width: 300px; 
+    }
+} */
+ .a{
+    position: fixed; /* Keeps it fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    background-image: url("{% static 'listpic.jpg' %}"); /* Semi-transparent background */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000; 
+
+ }
+
+
+</style>
+</head>
+<body>
+    <div class="a"><h1>Flowers List</h1></div>
+    
+    
+    
+    <div class="gallery">
+        {% for flower in flowers %}
+        <div class="image-card">
+            <img src="{{ flower.image.url }}" alt="Flower">
+            <div class="content">
+                <h5>{{ flower.name }}</h5>
+                <p>{{ flower.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    
+</div>
+</body>
+</html>
+
+
