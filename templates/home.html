@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+    body{
+      
+       
+        background-image: url("{% static 'new ng2.webp' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+
+        /* background-attachment: fixed; */
+              
+        /* image-resolution: 23px; */
+        /* background-size: 100% 100%; */
+    }
+div{
+        text-align: center;
+        margin-top: 100px;
+        color:floralwhite;
+        text-decoration: 23px;
+        font-weight: 100px;
+        width:100%;
+        height: 100%;
+       
+    }
+    h1{
+        font-size:100px;
+        font-style: italic;
+        color:fuchsia;
+        
+    }
+    button{
+
+            background-color:darkorchid;
+            color: white;
+            border:2px solid white;
+            cursor: pointer;
+            margin-top: 20px;
+            height:60px;
+            border-radius: 12px;
+            width:100px;
+        
+    }
+</style>
+</head>
+<body>
+    <div>
+    <h1>Welcome to the Flower App!</h1>
+    <!-- <p>Click below to upload a new flower or view details of an existing one.</p> -->
+
+    <!-- Link to Upload Flower Page --><br><br><br>
+    <a href="{% url 'upload_flower' %}">
+        <button type="button">Upload</button>
+    </a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- <a href="{% url 'flower_list' %}"><button>list</button></a> -->
+    <a href="{% url 'result_page' %}"><button>search</button></a>
+    <!-- Display List of Flowers -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="{% url 'flower_info' %}"><button> All Flowers</button></a>
+</div>
+   
+</body>
+</html>
+
+
+
