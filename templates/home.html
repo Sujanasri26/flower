@@ -1,5 +1,5 @@
 {% load static %}
-{% include 'navbar.html'%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,18 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+    function myuserid()
+    {
+        var us=document.getElementById('a').value;
+        var pw=document.getElementById("m2").value;
+        if(us=="flowerapp" && pw=="flower@12345")
+       {
+        alert("Login Successfully!!!!!!");
+        window.location="flowers";
+       }
+    }
+</script>
 <style>
     body{
       
@@ -22,7 +34,33 @@
         /* image-resolution: 23px; */
         /* background-size: 100% 100%; */
     }
-div{
+    h1{
+            color: ivory;
+             margin-top:100px;
+             font-size: 100px;
+
+        }
+        h2{
+            color: ivory;
+             
+             font-size: 100px;
+            
+        }
+        input[type="text"]
+        {
+    border-radius:20px;
+    border: 2px  groove black;
+   background-color: transparent;
+    
+}
+input[type="password"]{
+    
+    border-radius:20px;
+    border: 2px  groove black;
+    background-color: transparent;
+}
+
+.m{
         text-align: center;
         margin-top: 100px;
         color:floralwhite;
@@ -38,7 +76,7 @@ div{
         color:fuchsia;
         
     }
-    button{
+    #bu{
 
             background-color:darkorchid;
             color: white;
@@ -53,19 +91,43 @@ div{
 </style>
 </head>
 <body>
-    <div>
+    <div class="m">
     <h1>Welcome to the Flower App!</h1>
-    <!-- <p>Click below to upload a new flower or view details of an existing one.</p> -->
-
-    <!-- Link to Upload Flower Page --><br><br><br>
-    <a href="{% url 'upload_flower' %}">
-        <button type="button">Upload</button>
-    </a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <!-- <a href="{% url 'flower_list' %}"><button>list</button></a> -->
-    <a href="{% url 'result_page' %}"><button>search</button></a>
-    <!-- Display List of Flowers -->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="{% url 'flower_info' %}"><button> All Flowers</button></a>
+    <br><br><br>
+    <div><button type="button" id="bu" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#example1"><b>login</b></button>
+        <div class="modal fade " id="example1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="model-title text-light text-light text-bolder" id="example1"><b>Login</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body  bg-dark">
+                     <div class="bg-dark"></div> 
+        <form class="bg-dark"> 
+        
+        <table align="center bg-dark">
+    <tr>
+        <td><label class="text-light"><b>UserName:</b></label></td><td><input class="text-light" type="text" placeholder="Enter UserName" id="a"></td>
+    </tr>
+    <tr>
+        <td><label class="text-light"><b>Password:<b></label></td><td><input class="text-light" type="password" placeholder="Enter Password" id="m2"><td>
+    
+        </tr>
+        </table>
+    </form>
+</center>
+</div>
+<div class="modal-footer bg-dark"onsubmit="return myuserid()">
+      <button type="button" vlaue="submit" class="btn btn-secondary bg-success text-light" onclick=myuserid()>Register</button>
+     <button type="button" class="btn btn-secondary bg-info text-light" data-bs-dismiss="modal">save changes</button>
+</div>
+            
+       
+   
+</div> 
+        </div>
+   
 </div>
    
 </body>
