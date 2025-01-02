@@ -1,6 +1,7 @@
+{% include 'navbar.html'%}
 {% load static %}
 <!-- flowers/flower_list.html -->
-{% include 'navbar.html'%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,205 +9,194 @@
     <title>Flower List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<!-- <style>
-        body {
-            background-image: url("{% static 'listpic.jpg' %}");
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover; 
-        }
-        h1{
-            color:cornsilk;
-            font-size: 100px;
-            margin-left: 400px;
-        }
-        h3
-        {
-          color:lightpink;
-          font-size: 80px;
+{% include 'navbar.html'%}
+{% load static %}
+<!-- flowers/flower_list.html -->
 
-        }
-        p
-        {
-          color:aliceblue;
-          font-size: 20px;
-          font-weight: bolder;
-
-        }
-        img
-        {
-            border: 2px solid whitesmoke;
-            height:400px;
-            width:500px;
-        }
-        ul
-        {
-         color:fuchsia;
-        }
-        .carousel
-        {
-            height: 700px;
-            width:800px;
-            margin-left: 300px;
-        }
-</style>
-</head>
-<body>
-    <h1>Flower List</h1>
-
-<div id="carouselExampleCaptions" class="carousel w-80" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        {% for flower in flowers %}
-        <button 
-            type="button" 
-            data-bs-target="#carouselExampleCaptions" 
-            data-bs-slide-to="{{ forloop.counter0 }}" 
-            class="{% if forloop.first %}active{% endif %}" 
-            aria-current="{% if forloop.first %}true{% endif %}" 
-            aria-label="Slide {{ forloop.counter }}">
-        </button>
-        {% endfor %}
-    </div>
-
-    <div class="carousel-inner">
-        {% for flower in flowers %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{{ flower.image.url }}" class="d-block w-100" alt="{{ flower.name }}">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>{{ flower.name }}</h5>
-                <p>{{ flower.description }}</p>
-            </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-
-         
-</body>
-</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <style>
-body {
-    background-image: url("{% static 'listpic.jpg' %}");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-}
-
-h1 {
-    text-align: center;
-    color:black;
-    font-size: 80px;
-    margin-bottom: 20px;
-}
-
-.gallery {
-    margin-top: 220px;
-    display: flex;
-    flex-wrap: wrap; /* Ensures items wrap into a new row */
-    justify-content: center; /* Centers rows horizontally */
-    gap: 20px; 
-   /* Adds space between items */
-}
-
-.image-card {
-     /* Three cards per row */
-     width: 50%; /* Example: Adjust to 25% for smaller cards */
-     max-width: 400px;  /* Ensures cards don’t stretch too large */
-    border: 5px solid black;
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    background-color:hotpink;
-    text-align: center;
-}
-
-.image-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Maintains aspect ratio */
-    border-bottom: 5px solid black;
-}
-
-.content {
-    padding: 15px;
-}
-
-.content h5 {
-    margin: 10px 0 5px;
-    font-size: 34px;
-    color: black;
-}
-
-.content p {
-    font-size: 14px;
-    color:black;
-}
-
-/* 
-@media (max-width: 800px) {
-    .image-card {
-        width: 80%; 
+    /* General body styling */
+    body {
+        background-color: #f7f7f7; /* Light neutral background for contrast */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Poppins', Arial, sans-serif; /* Modern and clean font */
+        margin: 0;
+        padding: 0;
     }
-}
 
-@media (max-width: 480px) {
-    .image-card {
-        width: 300px; 
+    /* Title styling */
+    h1 {
+        text-align: center;
+        color: #333; /* Dark gray for good readability */
+        font-size: 60px; /* Reduced size for better balance */
+        margin: 20px 0;
+        font-weight: bold;
+        position: fixed; /* Make the title static */
+        top: 50px; /* Adjust position below the navbar */
+        width: 100%; /* Full width */
+        background-color: #ffffff; /* White background for contrast */
+        text-align: center;
+        color: #333; /* Dark gray for readability */
+        font-size: 60px;
+        margin: 0;
+        padding: 10px 0;
+        font-weight: bold;
+        z-index: 999; /* Ensure it's above other content */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
-} */
- .a{
-    position: fixed; /* Keeps it fixed at the top */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full width */
-    margin-top: 50px;
-    background-image: url("{% static 'listpic.jpg' %}"); /* Semi-transparent background */
-    color: white;
-    padding: 20px;
-    text-align: center;
-    z-index: 1000; 
 
- }
+    /* Navbar styling */
+    .navbar {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        z-index: 1000;
+        background-color: #003366; /* Professional navy blue */
+        border-bottom: 3px solid #004080;
+        color: #fff; /* White text */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
 
+    .navbar h1 {
+        font-size: 24px;
+        margin: 0;
+    }
 
+    /* Gallery styling */
+    .gallery {
+        margin-top: 120px;
+        display: grid; /* Using grid for better alignment */
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Card styling */
+    .image-card {
+        max-width: 100%; /* Responsive width */
+        background-color: #ffffff; /* White card background */
+        border: 1px solid #ddd; /* Light border for separation */
+        border-radius: 12px; /* Rounded corners */
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+    }
+
+    .image-card:hover {
+        transform: translateY(-5px); /* Lift effect */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    }
+
+    /* Image styling */
+    .image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover; /* Maintain aspect ratio */
+        border-bottom: 1px solid #ddd; /* Separation */
+    }
+
+    /* Content styling */
+    .content {
+        padding: 15px;
+    }
+
+    .content h5 {
+        margin: 10px 0;
+        font-size: 24px; /* Balanced size */
+        color: #003366; /* Navy blue for headings */
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .content p {
+        font-size: 16px;
+        color: #666; /* Gray for secondary text */
+        line-height: 1.6; /* Improved readability */
+        text-align: justify; /* Align text for better appearance */
+    }
+
+    /* Button styling */
+    .btn {
+        background-color: #007bff; /* Primary blue */
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-transform: uppercase;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 40px;
+        }
+
+        .content h5 {
+            font-size: 20px;
+        }
+
+        .content p {
+            font-size: 14px;
+        }
+        
+    }
+</style>
 </style>
 </head>
 <body>
-    <div class="a"><h1>Flowers List</h1></div>
-    
-    
-    
+    <h1>Flowers List</h1>
     <div class="gallery">
         {% for flower in flowers %}
         <div class="image-card">
             <img src="{{ flower.image.url }}" alt="Flower">
             <div class="content">
-                <h5>{{ flower.name }}</h5>
+                <h5 data-bs-toggle="modal" data-bs-target="#flowerModal-{{ forloop.counter }}">{{ flower.name }}</h5>
                 <p>{{ flower.description }}</p>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="flowerModal-{{ forloop.counter }}" tabindex="-1" aria-labelledby="flowerModalLabel-{{ forloop.counter }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="flowerModalLabel-{{ forloop.counter }}">{{ flower.name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6><strong>Uses of {{ flower.name }}</strong></h6>
+                        <p>{{ flower.Uses }}</p>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
     </div>
-    
-    
-    
-</div>
 </body>
 </html>
+
+
+
+
 
 
