@@ -18,10 +18,11 @@ def upload_flower(request):
 
         name = request.POST.get('name')
         description = request.POST.get('description')
+        Uses = request.POST.get('Uses')
         image = request.FILES.get('image')
 
         if name and description and image:
-            flower = Flower(name=name, description=description, image=image)
+            flower = Flower(name=name, description=description,Uses=Uses, image=image)
             flower.save()
             messages.success(request, 'Flower uploaded successfully!')
             return redirect('flower_info')
@@ -39,18 +40,30 @@ def flower_info(request):
     flowers = Flower.objects.all()
     return render(request, 'information.html', {'flowers': flowers})
 
-def result_page(request):
-    flower = None
-    error_message = None
+# def result_page(request):
+#     flower = None
+#     error_message = None
 
-    if request.method == 'POST':
+#     if request.method == 'POST':
+#         flower_name = request.POST.get('flower_name')
+        
+#         try:
+#             # Fetch the flower details by name
+#             flower = Flower.objects.get(name__iexact=flower_name)
+#         except Flower.DoesNotExist:
+#             # Handle the case where the flower is not found
+#             error_message = f"No details found for the flower: {flower_name}"
+
+#     return render(request, 'result.html', {'flower': flower, 'error_message': error_message})
+
+def result_page(request):
+    if request.method == "POST":
         flower_name = request.POST.get('flower_name')
         try:
-            # Fetch the flower details by name
             flower = Flower.objects.get(name__iexact=flower_name)
+            return render(request, 'result.html', {'flower': flower})
         except Flower.DoesNotExist:
-            # Handle the case where the flower is not found
-            error_message = f"No details found for the flower: {flower_name}"
-
-    return render(request, 'result.html', {'flower': flower, 'error_message': error_message})
+            error_message = "Flower not found. Please try again."
+            return render(request, 'result.html', {'error_message': error_message})
+    return render(request, 'result.html')
 

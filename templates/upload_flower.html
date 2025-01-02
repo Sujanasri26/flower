@@ -9,100 +9,146 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <style>
-        body {
-            background-image: url("{% static 'up1.jpg' %}");
-            font-family: Arial, sans-serif;
-            margin: 20px;
-    
+       
+       body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-size: cover; 
+            background-size: cover;
+            padding-top: 80px; /* Adding space to prevent content being hidden under navbar */
         }
-        form {
-            max-width: 500px;
-            margin:50px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        ::placeholder
-        {
-            color: aliceblue;
-        }
-        input, textarea, button {
+
+        .navbar {
+            background-color: #003366;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
             width: 100%;
-            padding: 10px;
-            background-color:black;
-            color: #d4edda;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #dc3545;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin-left: 23px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        input[type="file"] {
+            padding: 5px;
+            background-color: #fff;
+        }
+
         button {
-            background-color:brown;
-            color: white;
-            border:200px ;
+            width: 48%;
+            padding: 12px;
+            font-size: 1.1rem;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 6px;
             cursor: pointer;
-            height:50px;
-            width:80px;
-            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
         }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+        }
+
         button:hover {
             background-color: #218838;
         }
+
+        button[type="reset"]:hover {
+            background-color: #c82333;
+        }
+
         .messages {
             max-width: 500px;
-            margin: 20px auto;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.9);
+            margin: 0 auto 30px;
+            padding: 15px;
+            background-color: rgba(0, 123, 255, 0.1);
+            border-left: 5px solid #007bff;
+            color: #007bff;
             border-radius: 8px;
+            text-align: center;
         }
-        .success {
+        form{
+            margin-left: 23px;
+            background-attachment: fixed;
+            background-position:center;
+        }
+
+        /* .success {
             background-color: #d4edda;
             color: #155724;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
+        } */
+
         .error {
             background-color: #f8d7da;
             color: #721c24;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
         }
-        h1 {
-            text-align: left;
-            color:red;
-            margin-left: 100px;
-            font-size: 80px;
-            font-style: italic;
-            margin-top: 60px;
+
+        .form-container input, .form-container textarea {
+            margin-top: 10px;
         }
-        label{
-            color:crimson;
-            font-size: 30px;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            /* button {
+                width: 100%;
+                margin-top: 10px;
+            } */
         }
+
     </style>
 </head>
 <body>
     <h1>Upload a Flower</h1>
-    <!-- Display messages -->
-    <!-- <div class="messages"> -->
         {% if messages %}
             {% for message in messages %}
                 <div class="{{ message.tags }}">{{ message }}</div>
             {% endfor %}
         {% endif %}
-    <!-- </div> -->
-
-    <!-- Form for uploading flower -->
     <form method="POST" enctype="multipart/form-data" action="{% url 'upload_flower' %}">
         {% csrf_token %}
         <label for="id_name">Name:</label>
@@ -110,6 +156,10 @@
 
         <label for="id_description">Description:</label>
         <textarea name="description" id="id_description" placeholder="Enter flower description" required></textarea>
+
+        <label for="id_uses">Uses:</label>
+        <textarea name="uses" id="id_uses" placeholder="Enter flower Uses" required></textarea>
+
 
         <label for="id_image">Image:</label>
         <input type="file" name="image" id="id_image" accept="image/*" required>
