@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Flower</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url("{% static 'up1.jpg' %}");
+            font-family: Arial, sans-serif;
+            margin: 20px;
+    
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover; 
+        }
+        form {
+            max-width: 500px;
+            margin:50px;
+            padding: 20px;
+            background-color:;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        ::placeholder
+        {
+            color: aliceblue;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            background-color:black;
+            color: #d4edda;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        
+        }
+        button {
+            background-color:brown;
+            color: white;
+            border:200px ;
+            cursor: pointer;
+            height:50px;
+            width:80px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .messages {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: left;
+            color:darkred;
+            margin-left: 100px;
+            font-size: 80px;
+            font-style: italic;
+        }
+        label{
+            color:crimson;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload a Flower</h1>
+    <!-- Display messages -->
+    <!-- <div class="messages"> -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    <!-- </div> -->
+
+    <!-- Form for uploading flower -->
+    <form method="POST" enctype="multipart/form-data" action="{% url 'upload_flower' %}">
+        {% csrf_token %}
+        <label for="id_name">Name:</label>
+        <input type="text" name="name" id="id_name" placeholder="Enter flower name" required>
+
+        <label for="id_description">Description:</label>
+        <textarea name="description" id="id_description" placeholder="Enter flower description" required></textarea>
+
+        <label for="id_image">Image:</label>
+        <input type="file" name="image" id="id_image" accept="image/*" required>
+
+        <button type="submit">Upload</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="reset">Reset</button>
+    </form>
+ </div>
+    
+    
+    
+</body>
+</html>
