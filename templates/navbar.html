@@ -1,148 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <style>
-        /* Navbar styles */
-        .navbar {
-            width: 100%;
-            height: 60px;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-            background-color: #003366; /* Professional navy blue */
-            border-bottom: 2px solid #004080; /* Subtle border */
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-        }
-    
-        .navbar .navbar-brand {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-    
-        .navbar .navbar-nav .nav-link {
-            color: #e0e0e0;
-            font-size: 18px;
-            font-weight: 500;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-    
-        .navbar .navbar-nav .nav-link:hover {
-            color: #ffcc00; /* Highlight color on hover */
-        }
-    
-        .navbar .form-control {
-            border: 1px solid #004080;
-            border-radius: 20px;
-            background-color: #ffffff;
-            padding: 5px 15px;
-            color: #333;
-            width: 250px;
-        }
-    
-        .navbar .btn {
-            background-color: #0066cc; /* Button color */
-            border: none;
-            color: #ffffff;
-            font-size: 16px;
-            padding: 5px 15px;
-            border-radius: 20px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-    
-        .navbar .btn:hover {
-            background-color: #004080; /* Darker shade on hover */
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle hover effect */
-        }
-    
-        .modal-header {
-            background-color: #004080;
-            color: #ffffff;
-        }
-    
-        .modal-footer .btn-primary {
-            background-color: #0066cc;
-            border: none;
-        }
-    
-        .modal-footer .btn-primary:hover {
-            background-color: #004080;
-        }
-    </style>
-    
-       
-    <script>
-        function verifyUser() {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            if (username === "flowerapp" && password === "flower@12345") {
-                alert("Login Successfully!");
-                window.location.href = "{% url 'upload_flower' %}";
-            } else {
-                alert("Invalid Username or Password!");
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    /* Navbar */
+    .navbar {
+      height: 65px;
+      background: linear-gradient(90deg, #003366, #00509e);
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .navbar-brand {
+      color: #fff !important;
+      font-size: 28px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .nav-link {
+      color: #e0e0e0 !important;
+      font-size: 18px;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #ffcc00 !important;
+      transform: scale(1.1);
+    }
+    .form-control {
+      border-radius: 25px;
+      padding: 8px 15px;
+      border: 1px solid #00509e;
+    }
+    .btn-success {
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+    .btn-success:hover {
+      background-color: #004080;
+      transform: scale(1.05);
+    }
+
+    /* Modal */
+    .modal-header {
+      background: linear-gradient(90deg, #003366, #00509e);
+      color: #fff;
+    }
+    .modal-content {
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: #00509e;
+      border: none;
+      border-radius: 25px;
+      padding: 8px 20px;
+      transition: 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #003366;
+      transform: scale(1.05);
+    }
+    .btn-secondary {
+      border-radius: 25px;
+    }
+  </style>
+  <script>
+    function verifyUser() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      if (username === "flowerapp" && password === "flower@12345") {
+        alert("Login Successfully!");
+        window.location.href = "{% url 'upload_flower' %}";
+      } else {
+        alert("Invalid Username or Password!");
+      }
+    }
+  </script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <!-- <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="/">🌸 Flower App</a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/"><b>Home</b></a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" ><b>Upload</b></a>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'flower_list' %}" ><strong>List</strong></a>
-          </li>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto me-4">
+          <li class="nav-item"><a class="nav-link active" href="/"><b>Home</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><b>Upload</b></a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'flower_list' %}"><b>List</b></a></li>
         </ul>
-        <form class="d-flex b" method="POST" action="{% url 'result_page' %}">
-            {% csrf_token %}
-            <input class="form-control me-2" type="text" name="flower_name" placeholder="Search for a flower" required>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="btn btn-success s" type="submit">Search</button>
-          </form>
+        <form class="d-flex" method="POST" action="{% url 'result_page' %}">
+          {% csrf_token %}
+          <input class="form-control me-2" type="text" name="flower_name" placeholder="🔍 Search for a flower" required>
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="verifyUser()">Login</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">🌸 Secure Login</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="verifyUser()">Login</button>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>
-7
