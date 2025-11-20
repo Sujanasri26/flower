@@ -30,18 +30,20 @@
       color: #ffcc00 !important;
       transform: scale(1.1);
     }
-    .form-control {
-      border-radius: 25px;
-      padding: 8px 15px;
+    .form-control[type='text'] {
+      border-radius: 14px;
+      margin-top: 12px;
+      padding: 9px 15px;
       border: 1px solid #00509e;
+      height:40px;
     }
-    .btn-success {
+    /* .btn-success [type="submit"]{
       border-radius: 25px;
       padding: 8px 20px;
       font-weight: 500;
       transition: 0.3s ease;
-    }
-    .btn-success:hover {
+    } */
+    .btn-success:hover[type="submit"] {
       background-color: #004080;
       transform: scale(1.05);
     }
@@ -58,19 +60,19 @@
     .form-label {
       font-weight: 500;
     }
-    .btn-primary {
-      background: #00509e;
+    .btn-primary[type="submit"] {
+      background:green;
       border: none;
       border-radius: 25px;
       padding: 8px 20px;
       transition: 0.3s ease;
     }
-    .btn-primary:hover {
-      background: #003366;
+    .btn-primary:hover[type="submit"] {
+      background: skyblue;
       transform: scale(1.05);
     }
-    .btn-secondary {
-      border-radius: 25px;
+    .btn-secondary[type="submit"] {
+      border-radius: 30px;
     }
   </style>
   <script>
@@ -102,8 +104,8 @@
         </ul>
         <form class="d-flex" method="POST" action="{% url 'result_page' %}">
           {% csrf_token %}
-          <input class="form-control me-2" type="text" name="flower_name" placeholder="🔍 Search for a flower" required>
-          <button class="btn btn-success" type="submit">Search</button>
+          <input class="form-control me-3" type="text" name="flower_name" placeholder="🔍 Search for a flower" required>
+          <button class="btn btn-primary" type="submit">Search</button>
         </form>
       </div>
     </div>
