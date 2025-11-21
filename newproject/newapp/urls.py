@@ -18,6 +18,7 @@ urlpatterns = [
     path('upload/', views.upload_flower, name='upload_flower'),  # Upload flower page
     path('flowers/', views.flower_list, name='flower_list'),  # Flower list page
     path('result/', views.result_page, name='result_page'),
+    
   # Flower prediction result
     
 ]
