@@ -28,7 +28,7 @@ SECRET_KEY = "django-insecure-$&q@4u1xjy*=_qxyb@e4eaum^s7fczb+z@9_l6b=nd#%a8*5a6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','flower-ihs7.onrender.co'
+ALLOWED_HOSTS = ['flower-ihs7.onrender.co'
                 ,'flower-ihs7.onrender.com'
                 ]
 

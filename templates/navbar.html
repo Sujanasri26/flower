@@ -79,7 +79,7 @@
     function verifyUser() {
       var username = document.getElementById('username').value;
       var password = document.getElementById('password').value;
-      if (username === "flowerapp" && password === "flower@12345") {
+      if (username === "flowerapp" && password === "flowerapp@123") {
         alert("Login Successfully!");
         window.location.href = "{% url 'upload_flower' %}";
       } else {
